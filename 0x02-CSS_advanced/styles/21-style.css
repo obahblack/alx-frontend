@@ -173,6 +173,17 @@ a[href]:active {
     padding: 0.5rem;
 }
 
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+[class^="col-"] {
+    float: left;
+    padding: 0.5rem;
+}
+
 .footer {
     padding: var(--footer-padding);
 }

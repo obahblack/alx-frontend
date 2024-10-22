@@ -173,6 +173,17 @@ a[href]:active {
     padding: 0.5rem;
 }
 
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+[class^="col-"] {
+    float: left;
+    padding: 0.5rem;
+}
+
 .footer {
     padding: var(--footer-padding);
 }
@@ -185,4 +196,10 @@ a[href]:active {
 
 .footer ul {
     text-align: right;
+}
+
+[data-section-theme=“dark”] {
+    --text-color: var(--color-white);
+    --section-title-color: var(--color-white);
+    background-color: var(--color-black);
 }
