@@ -170,11 +170,16 @@
   
   .visually-hidden:not(:focus):not(:active) {
     position: absolute !important;
-    height: 1px;
-    width: 1px;
+    height: auto;
+    width: 100%;
     overflow: hidden;
     clip: rect(1px, 1px, 1px, 1px);
     white-space: nowrap;
+  }
+
+  main img {
+    width: 100%;
+    height: auto;
   }
   
   /*** 2. LAYOUT ***/
@@ -183,9 +188,10 @@
       ============================= */
   
   .container {
-    width: 960px;
+    max-width: 960px;
     margin-left: auto;
     margin-right: auto;
+    
   }
   
   /* Grid
@@ -211,6 +217,27 @@
   
   .col-1-2 {
     width: calc((100% / 2) - 2rem);
+  }
+
+  @media (max-width: 767px) {
+    :root {
+      --section-padding: 5rem 1.5rem;
+      --section-body-padding: 2rem 0 0;
+    }
+
+    ul.row, row {
+      flex-direction: column;
+      margin: o;
+    }
+
+    [class*='col-'] {
+      margin: 0 0 3rem 0;
+    }
+
+    .col-1-3, .col-1-2 {
+      width: 100%;
+    }
+
   }
   
   /* Navbar
@@ -261,6 +288,23 @@
     background-color: var(--color-primary);
     width: 100%;
   }
+
+  @media (max-width: 767px)  {
+    :root {
+      --nav-item-margin: 0;
+    }
+    .navbar-menu {
+      display: none;
+      flex: 1;
+    }
+
+    .header .nav {
+      flex-direction: column;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height .2s ease-out;
+    }
+  }
   
   /* Header
       ============================= */
@@ -276,6 +320,40 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .header .menu-icon {
+    cursor: pointer;
+    padding: 2.5rem;
+    position: relative;
+    user-select: none;
+  }
+
+  .header .menu-icon .navicon {
+    background-color: var(--color-white);
+    display: block;
+    width: 2rem;
+    height: .2rem;
+    position: relative;
+    transition: background .2s ease-out;
+  }
+
+  .header .menu-icon .navicon::before,
+  .header .menu-icon .navicon::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: var(--color-white);
+    transition: all .2s ease-out;
+  }
+  .header .menu-icon .navicon::before {
+    top: .7rem;
+  }
+
+  .header .menu-icon .navicon::after {
+    top: -.7rem;
   }
   
   /* Footer
@@ -398,6 +476,12 @@
   
   .section-latest-news .row {
     flex-direction: row-reverse;
+  }
+
+  @media (max-width: 767px) {
+    .section-latest-news .row {
+      flex-direction: column;
+    }
   }
   
   /* Section SERVICES
